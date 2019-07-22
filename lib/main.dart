@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:async/async.dart';
+import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
 void main() {
   runApp(MyApp(
@@ -28,21 +28,36 @@ class MyApp extends StatelessWidget {
 
   MyApp({Key key, @required this.items}) : super(key: key);
 
+  void _pushWebview(BuildContext context) {
+    Navigator.of(context).pushNamed('/webView');
+  }
+
   @override
   Widget build(BuildContext context) {
     final title = 'MyRutgers app';
     return MaterialApp(
       title: title,
+      routes: {
+        '/webView': (_) =>
+        new WebviewScaffold(
+          url: "https:\\fluttercentral.com",
+          appBar: new AppBar(
+            title: const Text('Widget Webview'),
+          ),
+          withZoom: false,
+          withLocalStorage: true,
+        )
+      },
       home: Scaffold(
         appBar: AppBar(
           title: Text(title),
           backgroundColor: const Color(0xffcc0033),
           actions: <Widget>[
             IconButton(
-              icon: Icon(Icons.settings, color: Colors.white)
+                icon: Icon(Icons.settings, color: Colors.white)
             ),
             IconButton(
-              icon: Icon(Icons.supervised_user_circle, color: Colors.white)
+                icon: Icon(Icons.supervised_user_circle, color: Colors.white)
             )
           ],
         ),
@@ -60,10 +75,10 @@ class MyApp extends StatelessWidget {
                 return Container(
                     padding: EdgeInsets.only(top: 10.0),
                     child: ListTile(
-                          title: Text(
-                              item.heading,
-                              style: TextStyle(color: const Color(0xffCC2727), fontSize: 25.0)
-                          ),
+                      title: Text(
+                          item.heading,
+                          style: TextStyle(color: const Color(0xffCC2727), fontSize: 25.0)
+                      ),
                     )
                 );
               } else if (item is UserItem) {
@@ -155,25 +170,26 @@ class MyApp extends StatelessWidget {
                                   switch (idx) {
                                     case 0:
                                       return ListTile(
-                                        title: Text("Busch Dining Hall"),
-                                        subtitle: Text("Busch Campus"),
+                                          title: Text("Busch Dining Hall"),
+                                          subtitle: Text("Busch Campus"),
+                                        onTap: () {_pushWebview(context);},
                                       );
-                                    case 1:
-                                      return ListTile(
-                                          title: Text("Brower Commons"),
-                                          subtitle: Text("College Ave Campus")
-                                      );
-                                    case 2:
-                                      return ListTile(
-                                          title: Text("Livingston Dining Hall"),
-                                          subtitle: Text("Livingston Campus")
-                                      );
-                                    default:
-                                      return ListTile(
-                                          title: Text("Cook Dining Hall"),
-                                          subtitle: Text("Cook/Douglass Campus")
-                                      );
-                                  }
+                                  case 1:
+                                  return ListTile(
+                                  title: Text("Brower Commons"),
+                                  subtitle: Text("College Ave Campus")
+                                  );
+                                  case 2:
+                                  return ListTile(
+                                  title: Text("Livingston Dining Hall"),
+                                  subtitle: Text("Livingston Campus")
+                                  );
+                                  default:
+                                  return ListTile(
+                                  title: Text("Cook Dining Hall"),
+                                  subtitle: Text("Cook/Douglass Campus")
+                                  );
+                                }
                                 })
                           ],
                         )
