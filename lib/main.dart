@@ -6,6 +6,7 @@ void main() {
   runApp(MyApp(
     items: [HeadingItem("myDashboard"),
     UserItem("Colin Walsh", "Undergrad", "assets/me.jpeg"),
+    ClassItem(),
     ScheduleItem(),
     DiningOptions(),
     BusFavorites()
@@ -61,6 +62,7 @@ class MyApp extends StatelessWidget {
             )
           ],
         ),
+        floatingActionButton: FloatingActionButton(onPressed: null),
         body: Container(
           color: const Color(0xffE9EDEF),
           child: ListView.builder(
@@ -105,7 +107,7 @@ class MyApp extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(8.0),
                       child: ExpansionTile(
-                          title: Text("Your Classes", style: TextStyle(color: const Color(0xffcc2727))),
+                          title: Text("Upcoming Assignments", style: TextStyle(color: const Color(0xffcc2727))),
                           backgroundColor: Colors.white,
                           initiallyExpanded: true,
                           children: <Widget>[
@@ -152,7 +154,44 @@ class MyApp extends StatelessWidget {
                       ),
                     )
                 );
-              } else if (item is DiningOptions) {
+              } else if (item is ClassItem) {
+                return Container(
+                    padding: EdgeInsets.only(left: 8.0, right: 8.0, bottom: 6.0),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8.0),
+                      child: ExpansionTile(
+                          title: Text("My Classes", style: TextStyle(color: const Color(0xffcc2727))),
+                          backgroundColor: Colors.white,
+                          initiallyExpanded: true,
+                          children: <Widget>[
+                            ListView.builder(
+                                itemCount: 4,
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemBuilder: (context, idx) {
+                                  switch (idx) {
+                                    case 0:
+                                      return ListTile(title: Text("Intro to Comp Sci"),
+                                        subtitle: Text("TTh 12:00pm-2:50pm"),
+                                      );
+                                    case 1:
+                                      return ListTile(title: Text("Planet Earth"),
+                                        subtitle: Text("MWF 1:00pm-2:10pm"),
+                                      );
+                                    case 2:
+                                      return ListTile(title: Text("College Research and Writing"),
+                                        subtitle: Text("MWF 8:00am-9:50am"),
+                                      );
+                                    default:
+                                      return ListTile(title: Text("Data 101"),
+                                        subtitle: Text("TTh 3:10pm-5:30pm"),
+                                      );
+                                  }
+                                })]
+                      ),
+                    )
+                );
+            } else if (item is DiningOptions) {
                 return Container(
                     padding: EdgeInsets.only(left: 8.0, right: 8.0, bottom: 6.0),
                     child: ClipRRect(
@@ -305,6 +344,9 @@ class UserItem implements ListItem {
   final String image;
 
   UserItem(this.title, this.subtitle, this.image);
+}
+class ClassItem implements ListItem {
+
 }
 
 class ScheduleItem implements ListItem {
