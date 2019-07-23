@@ -76,11 +76,17 @@ class MyApp extends StatelessWidget {
               if (item is HeadingItem) {
                 return Container(
                     padding: EdgeInsets.only(top: 10.0),
-                    child: ListTile(
-                      title: Text(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                      Container(width: 10,),
+                      Text(
                           item.heading,
-                          style: TextStyle(color: const Color(0xffCC2727), fontSize: 25.0)
+                          style: TextStyle(decoration: TextDecoration.underline, color: const Color(0xffCC2727), fontSize: 25.0)
                       ),
+                      Container(width: 40),
+                      Text("myDay", style: TextStyle(color: const Color(0xff888888), fontSize: 25.0)),
+                    ],
                     )
                 );
               } else if (item is UserItem) {
@@ -118,32 +124,32 @@ class MyApp extends StatelessWidget {
                                 itemBuilder: (context, idx) {
                                   switch (idx) {
                                     case 0:
-                                      return ListTile(title: Text("Intro to Comp Sci"),
-                                        subtitle: Text("Test 2 on Monday"),
+                                      return ListTile(title: Text("Test 2 on Monday"),
+                                        subtitle: Text("Intro to Comp Sci"),
                                         trailing: IconButton(
                                             icon: Icon(Icons.alarm_add, color: const Color(0xffcc2727)),
                                             alignment: Alignment.centerRight,
                                             onPressed: () async {await _classNotify(context, "Test 2");}),
                                       );
                                     case 1:
-                                      return ListTile(title: Text("Planet Earth"),
-                                        subtitle: Text("Quiz 2 by Thursday"),
+                                      return ListTile(title: Text("Quiz 2 by Thursday"),
+                                        subtitle: Text("Planet Earth"),
                                         trailing: IconButton(
                                             icon: Icon(Icons.alarm_add, color: const Color(0xffcc2727)),
                                             alignment: Alignment.centerRight,
                                             onPressed: () async {await _classNotify(context, "Quiz 2");}),
                                       );
                                     case 2:
-                                      return ListTile(title: Text("College Research and Writing"),
-                                        subtitle: Text("Essay 2 due @ 11pm"),
+                                      return ListTile(title: Text("Essay 2 due @ 11pm"),
+                                        subtitle: Text("College Research and Writing"),
                                         trailing: IconButton(
                                             icon: Icon(Icons.alarm_add, color: const Color(0xffcc2727)),
                                             alignment: Alignment.centerRight,
                                             onPressed: () async {await _classNotify(context, "Essay 2");}),
                                       );
                                     default:
-                                      return ListTile(title: Text("Data 101"),
-                                        subtitle: Text("Assign 2 due 9/2"),
+                                      return ListTile(title: Text("Assign 2 due 9/2"),
+                                        subtitle: Text("Data 101"),
                                         trailing: IconButton(
                                             icon: Icon(Icons.alarm_add, color: const Color(0xffcc2727)),
                                             alignment: Alignment.centerRight,
