@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/webView': (_) =>
         WebviewScaffold(
-          url: "https:\\rutgers.edu",
+          url: "http:\\food.rutgers.edu",
           appBar: new AppBar(
             title: const Text('WebView'),
           ),
