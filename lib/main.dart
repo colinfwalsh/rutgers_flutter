@@ -192,19 +192,23 @@ class MyApp extends StatelessWidget {
                                       );
                                     case 1:
                                       return ListTile(title: Text("Intro to Comp Sci"),
-                                        subtitle: Text("TTh 12:00pm-2:50pm"),
+                                        subtitle: Row(
+                                            children:
+                                            <Widget>[Text("Core 101: ", style: TextStyle(color: Colors.black54)),
+                                                     Text("TTh 12:00pm-2:50pm", style: TextStyle(color: Colors.black38)),
+                                            ]),
                                       );
                                     case 2:
                                       return ListTile(title: Text("Planet Earth"),
-                                        subtitle: Text("MWF 1:00pm-2:10pm"),
+                                        subtitle: Text("VH 102: MWF 1:00pm-2:10pm"),
                                       );
                                     case 3:
                                       return ListTile(title: Text("College Research and Writing"),
-                                        subtitle: Text("MWF 8:00am-9:50am"),
+                                        subtitle: Text("C/D Bio 104: MWF 8:00am-9:50am"),
                                       );
                                     default:
                                       return ListTile(title: Text("Data 101"),
-                                        subtitle: Text("TTh 3:10pm-5:30pm"),
+                                        subtitle: Text("Hill 103: TTh 3:10pm-5:30pm"),
                                       );
                                   }
                                 })]
