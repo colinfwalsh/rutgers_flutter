@@ -29,6 +29,9 @@ class MyApp extends StatelessWidget {
     final title = 'MyRutgers app';
     return MaterialApp(
       title: title,
+      theme: ThemeData(
+        primaryColor: const Color(0xffcc0033)
+      ),
       routes: {
         '/webView': (_) =>
         WebviewScaffold(
@@ -43,7 +46,6 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: Text(title),
-          backgroundColor: const Color(0xffcc0033),
           actions: <Widget>[
             IconButton(
                 icon: Icon(Icons.settings, color: Colors.white)
