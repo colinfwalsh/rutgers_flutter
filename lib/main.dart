@@ -92,8 +92,8 @@ class MyApp extends StatelessWidget {
               } else if (item is UserItem) {
                 return Container(
                     padding: EdgeInsets.only(left: 8.0, right: 8.0, bottom: 6.0, top: 10.0),
-                    child: ClipRRect(
-                        borderRadius: BorderRadius.circular(8.0),
+                    child: Card(
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
                         child: Container(
                             color: Colors.white,
                             child: ListTile(
@@ -110,8 +110,7 @@ class MyApp extends StatelessWidget {
               } else if (item is ScheduleItem) {
                 return Container(
                     padding: EdgeInsets.only(left: 8.0, right: 8.0, bottom: 6.0),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(8.0),
+                    child: Card(
                       child: ExpansionTile(
                           title: Text("Upcoming Assignments", style: TextStyle(color: const Color(0xffcc2727))),
                           backgroundColor: Colors.white,
@@ -163,8 +162,7 @@ class MyApp extends StatelessWidget {
               } else if (item is ClassItem) {
                 return Container(
                     padding: EdgeInsets.only(left: 8.0, right: 8.0, bottom: 6.0),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(8.0),
+                    child: Card(
                       child: ExpansionTile(
                           title: Text("My Classes", style: TextStyle(color: const Color(0xffcc2727))),
                           backgroundColor: Colors.white,
@@ -200,8 +198,7 @@ class MyApp extends StatelessWidget {
             } else if (item is DiningOptions) {
                 return Container(
                     padding: EdgeInsets.only(left: 8.0, right: 8.0, bottom: 6.0),
-                    child: ClipRRect(
-                        borderRadius: BorderRadius.circular(8.0),
+                    child: Card(
                         child: ExpansionTile(
                           title: Text("Dining Options", style: TextStyle(color: const Color(0xffcc2727))),
                           initiallyExpanded: true,
@@ -245,8 +242,7 @@ class MyApp extends StatelessWidget {
               } else if (item is BusFavorites) {
                 return Container(
                     padding: EdgeInsets.only(left: 8.0, right: 8.0, bottom: 6.0),
-                    child: ClipRRect(
-                        borderRadius: BorderRadius.circular(8.0),
+                    child: Card(
                         child: ExpansionTile(
                             title: Text("Favorited Bus Routes/Stops", style: TextStyle(color: const Color(0xffcc2727))),
                             initiallyExpanded: true,
