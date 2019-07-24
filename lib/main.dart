@@ -5,11 +5,11 @@ import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 void main() {
   runApp(MyApp(
     items: [HeadingItem("myDashboard"),
-    UserItem("Colin Walsh", "Undergrad", "assets/me.jpeg"),
-    ClassItem(),
-    ScheduleItem(),
-    DiningOptions(),
-    BusFavorites()
+      UserItem("Colin Walsh", "Undergrad", "assets/me.jpeg"),
+      ClassItem(),
+      ScheduleItem(),
+      DiningOptions(),
+      BusFavorites()
     ],
   )
   );
@@ -29,23 +29,21 @@ class MyApp extends StatelessWidget {
     final title = 'MyRutgers app';
     return MaterialApp(
       title: title,
-      theme: ThemeData(
-        primaryColor: const Color(0xffcc0033)
-      ),
       routes: {
         '/webView': (_) =>
-        WebviewScaffold(
-          url: "http:\\food.rutgers.edu",
-          appBar: new AppBar(
-            title: const Text('WebView'),
-          ),
-          withZoom: false,
-          withLocalStorage: true,
-        )
+            WebviewScaffold(
+              url: "http:\\food.rutgers.edu",
+              appBar: new AppBar(
+                title: const Text('WebView'),
+              ),
+              withZoom: false,
+              withLocalStorage: true,
+            )
       },
       home: Scaffold(
         appBar: AppBar(
           title: Text(title),
+          backgroundColor: const Color(0xffcc0033),
           actions: <Widget>[
             IconButton(
                 icon: Icon(Icons.settings, color: Colors.white)
@@ -55,7 +53,6 @@ class MyApp extends StatelessWidget {
             )
           ],
         ),
-        floatingActionButton: FloatingActionButton(onPressed: null),
         body: Container(
           color: const Color(0xffE9EDEF),
           child: ListView.builder(
@@ -72,23 +69,23 @@ class MyApp extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                      Container(width: 10,),
-                      Text(
-                          item.heading,
-                          style: TextStyle(decoration: TextDecoration.underline, color: const Color(0xffCC2727), fontSize: 25.0)
-                      ),
-                      Container(width: 40),
-                      Text("myDay", style: TextStyle(color: const Color(0xff888888), fontSize: 25.0)),
-                    ],
+                        Container(width: 10,),
+                        Text(
+                            item.heading,
+                            style: TextStyle(decoration: TextDecoration.underline, color: const Color(0xffCC2727), fontSize: 25.0)
+                        ),
+                        Container(width: 40),
+                        Text("myDay", style: TextStyle(color: const Color(0xff888888), fontSize: 25.0)),
+                      ],
                     )
                 );
               } else if (item is UserItem) {
                 return Container(
                     padding: EdgeInsets.only(left: 8.0, right: 8.0, bottom: 6.0, top: 10.0),
                     child: Card(
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+                        //shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
                         child: Container(
-                            color: Colors.white,
+                          //color: Colors.white,
                             child: ListTile(
                               onTap: null,
                               leading: CircleAvatar(
@@ -105,8 +102,9 @@ class MyApp extends StatelessWidget {
                     padding: EdgeInsets.only(left: 8.0, right: 8.0, bottom: 6.0),
                     child: Card(
                       child: ExpansionTile(
-                          title: Text("Upcoming Assignments", style: TextStyle(color: const Color(0xffcc2727))),
-                          backgroundColor: Colors.white,
+                          title:
+                            Text("Upcoming Assignments",
+                              style: TextStyle(color: const Color(0xffcc2727))),
                           initiallyExpanded: true,
                           children: <Widget>[
                             ListView.builder(
@@ -120,15 +118,15 @@ class MyApp extends StatelessWidget {
                                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                         children: <Widget>[
                                           Text("All", style: TextStyle(color: const Color(0xff888888))),
-                                        Text("Sakai",
-                                        style: TextStyle(
-                                          decoration: TextDecoration.underline,
-                                          color: const Color(0xffCC2727)
-                                        )),
-                                        Text("Canvas", style: TextStyle(color: const Color(0xff888888))),
-                                        Text("Moodle", style: TextStyle(color: const Color(0xff888888))),
-                                        Text("BlackBoard", style: TextStyle(color: const Color(0xff888888)))
-                                      ],
+                                          Text("Sakai",
+                                              style: TextStyle(
+                                                  decoration: TextDecoration.underline,
+                                                  color: const Color(0xffCC2727)
+                                              )),
+                                          Text("Canvas", style: TextStyle(color: const Color(0xff888888))),
+                                          Text("Moodle", style: TextStyle(color: const Color(0xff888888))),
+                                          Text("BlackBoard", style: TextStyle(color: const Color(0xff888888)))
+                                        ],
                                       );
                                     case 1:
                                       return ListTile(title: Text("Test 2 on Monday"),
@@ -173,7 +171,6 @@ class MyApp extends StatelessWidget {
                     child: Card(
                       child: ExpansionTile(
                           title: Text("My Classes", style: TextStyle(color: const Color(0xffcc2727))),
-                          backgroundColor: Colors.white,
                           initiallyExpanded: true,
                           children: <Widget>[
                             ListView.builder(
@@ -186,18 +183,18 @@ class MyApp extends StatelessWidget {
                                       return Container(
                                           padding: EdgeInsets.all(8.0),
                                           child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                          children: <Widget>[
-                                        Text("WebReg", style: TextStyle(color: const Color(0xff888888))),
-                                        Text("Degree Navigator", style: TextStyle(color: const Color(0xff888888)))
-                                      ])
+                                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                              children: <Widget>[
+                                                Text("WebReg", style: TextStyle(color: const Color(0xff888888))),
+                                                Text("Degree Navigator", style: TextStyle(color: const Color(0xff888888)))
+                                              ])
                                       );
                                     case 1:
                                       return ListTile(title: Text("Intro to Comp Sci"),
                                         subtitle: Row(
                                             children:
                                             <Widget>[Text("Core 101: ", style: TextStyle(color: Colors.black54)),
-                                                     Text("TTh 12:00pm-2:50pm", style: TextStyle(color: Colors.black38)),
+                                              Text("TTh 12:00pm-2:50pm", style: TextStyle(color: Colors.black38)),
                                             ]),
                                       );
                                     case 2:
@@ -217,14 +214,13 @@ class MyApp extends StatelessWidget {
                       ),
                     )
                 );
-            } else if (item is DiningOptions) {
+              } else if (item is DiningOptions) {
                 return Container(
                     padding: EdgeInsets.only(left: 8.0, right: 8.0, bottom: 6.0),
                     child: Card(
                         child: ExpansionTile(
                           title: Text("Dining Options", style: TextStyle(color: const Color(0xffcc2727))),
                           initiallyExpanded: true,
-                          backgroundColor: Colors.white,
                           children: <Widget>[
                             ListView.builder(
                                 shrinkWrap: true,
@@ -234,26 +230,26 @@ class MyApp extends StatelessWidget {
                                   switch (idx) {
                                     case 0:
                                       return ListTile(
-                                          title: Text("Busch Dining Hall"),
-                                          subtitle: Text("Busch Campus"),
+                                        title: Text("Busch Dining Hall"),
+                                        subtitle: Text("Busch Campus"),
                                         onTap: () {_pushWebview(context);},
                                       );
-                                  case 1:
-                                  return ListTile(
-                                  title: Text("Brower Commons"),
-                                  subtitle: Text("College Ave Campus")
-                                  );
-                                  case 2:
-                                  return ListTile(
-                                  title: Text("Livingston Dining Hall"),
-                                  subtitle: Text("Livingston Campus")
-                                  );
-                                  default:
-                                  return ListTile(
-                                  title: Text("Cook Dining Hall"),
-                                  subtitle: Text("Cook/Douglass Campus")
-                                  );
-                                }
+                                    case 1:
+                                      return ListTile(
+                                          title: Text("Brower Commons"),
+                                          subtitle: Text("College Ave Campus")
+                                      );
+                                    case 2:
+                                      return ListTile(
+                                          title: Text("Livingston Dining Hall"),
+                                          subtitle: Text("Livingston Campus")
+                                      );
+                                    default:
+                                      return ListTile(
+                                          title: Text("Cook Dining Hall"),
+                                          subtitle: Text("Cook/Douglass Campus")
+                                      );
+                                  }
                                 })
                           ],
                         )
@@ -268,7 +264,6 @@ class MyApp extends StatelessWidget {
                         child: ExpansionTile(
                             title: Text("Favorited Bus Routes/Stops", style: TextStyle(color: const Color(0xffcc2727))),
                             initiallyExpanded: true,
-                            backgroundColor: Colors.white,
                             children: <Widget>[
                               ListView.builder(
                                   shrinkWrap: true,
