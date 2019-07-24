@@ -15,15 +15,6 @@ void main() {
   );
 }
 
-/*
-List<ListItem>.generate(
-      1000,
-          (i) => i % 6 == 0
-          ? HeadingItem("Heading $i")
-          : MessageItem("Sender $i", "Message body $i", "assets/me.jpeg")
- */
-
-
 class MyApp extends StatelessWidget {
   final List<ListItem> items;
 
@@ -40,10 +31,10 @@ class MyApp extends StatelessWidget {
       title: title,
       routes: {
         '/webView': (_) =>
-        new WebviewScaffold(
-          url: "https:\\fluttercentral.com",
+        WebviewScaffold(
+          url: "https:\\rutgers.edu",
           appBar: new AppBar(
-            title: const Text('Widget Webview'),
+            title: const Text('WebView'),
           ),
           withZoom: false,
           withLocalStorage: true,
@@ -117,12 +108,27 @@ class MyApp extends StatelessWidget {
                           initiallyExpanded: true,
                           children: <Widget>[
                             ListView.builder(
-                                itemCount: 4,
+                                itemCount: 5,
                                 shrinkWrap: true,
                                 physics: const NeverScrollableScrollPhysics(),
                                 itemBuilder: (context, idx) {
                                   switch (idx) {
                                     case 0:
+                                      return Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                        children: <Widget>[
+                                          Text("All", style: TextStyle(color: const Color(0xff888888))),
+                                        Text("Sakai",
+                                        style: TextStyle(
+                                          decoration: TextDecoration.underline,
+                                          color: const Color(0xffCC2727)
+                                        )),
+                                        Text("Canvas", style: TextStyle(color: const Color(0xff888888))),
+                                        Text("Moodle", style: TextStyle(color: const Color(0xff888888))),
+                                        Text("BlackBoard", style: TextStyle(color: const Color(0xff888888)))
+                                      ],
+                                      );
+                                    case 1:
                                       return ListTile(title: Text("Test 2 on Monday"),
                                         subtitle: Text("Intro to Comp Sci"),
                                         trailing: IconButton(
@@ -130,7 +136,7 @@ class MyApp extends StatelessWidget {
                                             alignment: Alignment.centerRight,
                                             onPressed: () async {await _classNotify(context, "Test 2");}),
                                       );
-                                    case 1:
+                                    case 2:
                                       return ListTile(title: Text("Quiz 2 by Thursday"),
                                         subtitle: Text("Planet Earth"),
                                         trailing: IconButton(
@@ -138,7 +144,7 @@ class MyApp extends StatelessWidget {
                                             alignment: Alignment.centerRight,
                                             onPressed: () async {await _classNotify(context, "Quiz 2");}),
                                       );
-                                    case 2:
+                                    case 3:
                                       return ListTile(title: Text("Essay 2 due @ 11pm"),
                                         subtitle: Text("College Research and Writing"),
                                         trailing: IconButton(
@@ -169,20 +175,30 @@ class MyApp extends StatelessWidget {
                           initiallyExpanded: true,
                           children: <Widget>[
                             ListView.builder(
-                                itemCount: 4,
+                                itemCount: 5,
                                 shrinkWrap: true,
                                 physics: const NeverScrollableScrollPhysics(),
                                 itemBuilder: (context, idx) {
                                   switch (idx) {
                                     case 0:
+                                      return Container(
+                                          padding: EdgeInsets.all(8.0),
+                                          child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                          children: <Widget>[
+                                        Text("WebReg", style: TextStyle(color: const Color(0xff888888))),
+                                        Text("Degree Navigator", style: TextStyle(color: const Color(0xff888888)))
+                                      ])
+                                      );
+                                    case 1:
                                       return ListTile(title: Text("Intro to Comp Sci"),
                                         subtitle: Text("TTh 12:00pm-2:50pm"),
                                       );
-                                    case 1:
+                                    case 2:
                                       return ListTile(title: Text("Planet Earth"),
                                         subtitle: Text("MWF 1:00pm-2:10pm"),
                                       );
-                                    case 2:
+                                    case 3:
                                       return ListTile(title: Text("College Research and Writing"),
                                         subtitle: Text("MWF 8:00am-9:50am"),
                                       );
