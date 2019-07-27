@@ -1,11 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+import '../theme.dart';
 
-class DashBoard extends StatelessWidget {
+class DashboardScreen extends StatelessWidget {
   final List<ListItem> items;
 
-  DashBoard({Key key, @required this.items}) : super(key: key);
+  DashboardScreen({Key key, @required this.items}) : super(key: key);
 
   void _pushWebview(BuildContext context) {
     Navigator.of(context).pushNamed('/webView');
@@ -13,10 +14,21 @@ class DashBoard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final title = 'MyRutgers app';
     return Scaffold(
+        appBar: AppBar(
+          title: Text("Dashboard"),
+          elevation: 0.0,
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.playlist_add, color: Colors.white),
+              onPressed: () {
+                print('impliment edit widgets');
+              },
+            )
+          ]
+        ),
         body: Container(
-          color: const Color(0xffE9EDEF),
+          color: ThemeColors.background,
           child: ListView.builder(
             // Let the ListView know how many items it needs to build.
             itemCount: items.length,
