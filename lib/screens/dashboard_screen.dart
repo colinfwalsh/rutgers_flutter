@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+// import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+import 'package:provider/provider.dart';
 import '../theme.dart';
 
 class DashboardScreen extends StatelessWidget {
@@ -14,6 +15,8 @@ class DashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeColors theme = Provider.of<ThemeColors>(context);
+
     return Scaffold(
         appBar: AppBar(
           title: Text("Dashboard"),
@@ -28,7 +31,7 @@ class DashboardScreen extends StatelessWidget {
           ]
         ),
         body: Container(
-          color: ThemeColors.background,
+          color: theme.background,
           child: ListView.builder(
             // Let the ListView know how many items it needs to build.
             itemCount: items.length,

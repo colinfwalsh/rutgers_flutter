@@ -1,4 +1,12 @@
+/// Author: Christian Juth
+/// Date: 7/26/19
+/// File: navigation.dart
+/// Summary:
+///   This file contains both the TabBarView
+///   and bottomNavigationBar widgets.
+
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import './theme.dart';
 
 // screens
@@ -10,70 +18,35 @@ import './screens/profile_screen.dart';
 class Navigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      // title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
+    ThemeColors theme = Provider.of<ThemeColors>(context);
 
-        primarySwatch: ThemeColors.primary
-      ),
-      home: DefaultTabController(
-        length: 3,
-        child: Scaffold(
-          // appBar: AppBar(
-          //   backgroundColor: ThemeColors.primary,
-          //   title: Text('Rutgers'),
-          //   actions: <Widget>[
-          //     IconButton(
-          //       icon: Icon(Icons.settings, color: Colors.white),
-          //       onPressed: () {
-          //         Navigator.push(
-          //           context,
-          //           MaterialPageRoute(builder: (context) => SettingsPage()),
-          //         );
-          //       },
-          //     )
-          //   ]
-          // ),
-          body: TabBarView(
-            children: [
-              HomeScreen(),
-              DashboardScreen(items: [
-                UserItem("Colin Walsh", "Undergrad", "assets/me.jpeg"),
-                ClassItem(),
-                ScheduleItem(),
-                DiningOptions(),
-                BusFavorites()
-              ]),
-              ProfileScreen(),
-            ],
-          ),
-          bottomNavigationBar: Container(
-            color: ThemeColors.primary,
-            child: new TabBar(
-              tabs: [
-                Tab(
-                  icon: new Icon(Icons.home),
-                ),
-                Tab(
-                  icon: new Icon(Icons.apps),
-                ),
-                Tab(
-                  icon: new Icon(Icons.person),
-                )
-              ]
-            ),
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        body: TabBarView(
+          children: [
+            HomeScreen(),
+            DashboardScreen(items: [
+              UserItem("Colin Walsh", "Undergrad", "assets/me.jpeg"),
+              ClassItem(),
+              ScheduleItem(),
+              DiningOptions(),
+              BusFavorites()
+            ]),
+            ProfileScreen(),
+          ],
+        ),
+        bottomNavigationBar: Container(
+          color: theme.primary,
+          child: new TabBar(
+            tabs: [
+              Tab(icon: new Icon(Icons.home)),
+              Tab(icon: new Icon(Icons.apps)),
+              Tab(icon: new Icon(Icons.person))
+            ]
           ),
         ),
-      )
+      ),
     );
   }
 }

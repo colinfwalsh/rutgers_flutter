@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 Map<int, Color> color = {
   50:Color.fromRGBO(136,14,79, .1),
@@ -13,8 +14,41 @@ Map<int, Color> color = {
   900:Color.fromRGBO(136,14,79, 1),
 };
 
-@immutable
 class ThemeColors {
-  static final primary = MaterialColor(0xffcc0033, color);
-  static final background = Color(0xffE9EDEF);
+  Color primary;
+  Color background;
+  bool darkMode;
+
+  ThemeColors({darkMode}) {
+    this.darkMode = darkMode;
+    this.primary = MaterialColor(darkMode ? 0xff000000 : 0xffcc0033, color);
+    this.background = Color(darkMode ? 0xff333333 : 0xffE9EDEF);
+  }
+}
+
+class ThemeProvider extends StatelessWidget {
+  Widget home;
+  bool darkMode;
+
+  ThemeProvider({home, darkMode}) {
+    this.darkMode ??= darkMode;
+    this.home = home;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    ThemeColors theme = new ThemeColors(
+      darkMode: this.darkMode
+    );
+
+    return Provider<ThemeColors>.value(
+      value: theme,
+      child: MaterialApp(
+        theme: ThemeData(
+          primarySwatch: theme.primary
+        ),
+        home: this.home
+      )
+    );
+  }
 }
